@@ -18,6 +18,7 @@ medic_dog = {
     "threat": 0.8,
     "accuracy": 85,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
@@ -44,11 +45,12 @@ tank_human = {
     "max_hp": 150,
     "hp": 150,
     "max_mp": 100,
-    "mp": 100,
+    "mp": 30,
     "damage": 15,
     "threat": 1.0,
     "accuracy": 85,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
@@ -81,11 +83,12 @@ warrior = {
     "threat": 0.9,
     "accuracy": 85,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
             "name": "Боевой клич",
-            "description": "Увеличивает урон базовой атаки всех союзников на 1 ход",
+            "description": "Увеличивает урон базовой атаки союзников. 2 заряда",
             "type": "damage_boost",
             "mana_cost": 30,
             "value": 1.5,
@@ -112,7 +115,7 @@ werewolf = {
     "base_accuracy": 100,
     "base_crit_chance": 100,
     "max_mp": 100,
-    "mp": 90,
+    "mp": 30,
     "effects": [],
     "max_hp": 100,
     "hp": 100,
@@ -120,6 +123,7 @@ werewolf = {
     "threat": 0.8,
     "accuracy": 85,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "transform_timer": 0,
     "form": "human",
     "forms": {
@@ -179,17 +183,6 @@ werewolf = {
 }
 
 #Все враги
-goblin = {
-    "name": "Гоблин",
-    "max_hp": 130,
-    "hp": 130,
-    "mp": 0,
-    "max_mp": 0,
-    "damage": 18,
-    "threat": 1,
-    "effects": [],
-    "skills": []
-}
 orc = {
     "name": "Орк",
     "max_hp": 180,
@@ -201,13 +194,13 @@ orc = {
     "effects": [],
     "skills": []
 }
-wolf = {
-    "name": "Волк",
-    "max_hp": 50,
-    "hp": 50,
+goblin = {
+    "name": "Гоблин",
+    "max_hp": 130,
+    "hp": 130,
     "mp": 0,
     "max_mp": 0,
-    "damage": 30,
+    "damage": 16,
     "threat": 1,
     "effects": [],
     "skills": []
@@ -218,7 +211,18 @@ fox = {
     "hp": 90,
     "mp": 0,
     "max_mp": 0,
-    "damage": 24,
+    "damage": 20,
+    "threat": 1,
+    "effects": [],
+    "skills": []
+}
+wolf = {
+    "name": "Волк",
+    "max_hp": 50,
+    "hp": 50,
+    "mp": 0,
+    "max_mp": 0,
+    "damage": 30,
     "threat": 1,
     "effects": [],
     "skills": []
@@ -237,6 +241,7 @@ placeholder = {
     "threat": 1,
     "accuracy": 85,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
@@ -258,17 +263,18 @@ placeholder = {
     ]
 }
 stalker = {
-    "name": "Сталкер - НЕ РАБОТАЕТ",
+    "name": "Сталкер",
     "class": "damage",
     "icon": damage_icon,
-    "max_hp": 70,
-    "hp": 70,
+    "max_hp": 60,
+    "hp": 60,
     "max_mp": 100,
-    "mp": 130,
-    "damage": 20,
-    "threat": 0.7,
+    "mp": 30,
+    "damage": 15,
+    "threat": 0.8,
     "accuracy": 100,
     "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
@@ -279,47 +285,48 @@ stalker = {
             "value": 30,
             "duration": 2
         },
-        {
-            "name": "Разящий выстрел",
-            "description": "Герой совершает мощный выстрел, урон которого увеличивается от шанса критического удара.",
-            "type": "critical_shot",
-            "mana_cost": 50,
-            "value": 30,
-            "duration": None
-        }
+        # {
+        #     "name": "Разящий выстрел",
+        #     "description": "Герой совершает мощный выстрел, урон которого увеличивается от шанса критического удара.",
+        #     "type": "critical_shot",
+        #     "mana_cost": 50,
+        #     "value": 30,
+        #     "duration": None
+        # }
     ]
 }
 archer = {
     "name": "Лучница",
     "class": "damage",
     "icon": damage_icon,
-    "max_hp": 60,
-    "hp": 60,
+    "max_hp": 80,
+    "hp": 80,
     "max_mp": 100,
     "mp": 30,
     "damage": 20,
     "threat": 0.9,
     "accuracy": 100,
-    "crit_chance": 100,
+    "crit_chance": 20,
+    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
             "name": "Град стрел",
             "description": "Обрушает град стрел на врагов. Каждый выстрел стоит 15 маны",
             "type": "massive_damage",
-            "mana_cost": 15,
+            "mana_cost": 10,
             "value": 20,
             "duration": None,
             "max_duration": None
         },
-        {
-            "name": "Метка охотника",
-            "description": "Ставит метку охотника на врага, увеличивая получаемый им урон в 2 раза. Действует 2 хода",
-            "type": "damage_mark",
-            "mana_cost": 80,
-            "value": 2,
-            "duration": 2
-        }
+        # {
+        #     "name": "Метка охотника",
+        #     "description": "Ставит метку охотника на врага, увеличивая получаемый им урон в 2 раза. Действует 2 хода",
+        #     "type": "damage_mark",
+        #     "mana_cost": 80,
+        #     "value": 2,
+        #     "duration": 2
+        # }
     ]
 }
 
@@ -328,5 +335,5 @@ all_hero = [warrior, medic_dog, tank_human, werewolf]
 all_enemies = [goblin, orc, wolf, fox]
 secret_heroes = [archer, stalker]
 #Размеры команд
-hero_team_size = 2
-enemy_team_size = 1
+hero_team_size = 3
+enemy_team_size = 3

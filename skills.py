@@ -34,11 +34,19 @@ def skill_boost_damage(hero, hero_team, skill):
     alive_heroes = get_alive_units(hero_team)
     if not alive_heroes:
         return
-    effect = effects_list['damage_boost'].copy()
-    effect['charges'] = skill['charges']
-    effect['value'] = skill['value']
     for unit in alive_heroes:
-        if unit != hero:
+        if unit == hero:
+            continue
+        effect_exists = False
+        for eff in unit['effects']:
+            if eff['type'] == "damage_boost":
+                eff['charges'] += skill['charges']
+                effect_exists = True
+                break
+        if not effect_exists:
+            effect = effects_list['damage_boost'].copy()
+            effect['charges'] = skill['charges']
+            effect['value'] = skill['value']
             unit['effects'].append(effect.copy())
     hero['mp'] -= skill['mana_cost']
     print(f"{GREEN}{hero['name']}{RESET} использует {YELLOW}{skill['name']}{RESET}")

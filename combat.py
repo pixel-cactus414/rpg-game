@@ -17,18 +17,30 @@ def deal_damage(unit, target, damage):
     :return: (bool) True если цель умерла после атаки
                     False если цуль осталась жива
     """
-    for effect in unit['effects']:
+    #Проверка эффекта "Увеличение урона" у атакующего
+    expired = []
+    for i, effect in enumerate(unit['effects']):
         if effect['type'] == "damage_boost":
             damage *= effect['value']
             damage = int(damage)
             effect['charges'] -= 1
+            #Удаление эффекта, если заряжы закончились
             if effect['charges'] == 0:
-                effect.pop()
+                expired.append(i)
+    for i in reversed(expired):
+        unit['effects'].pop(i)
+    #Проверка эффектов у цели атаки
     for i, effect in enumerate(target['effects']):
+        #Проверка щита
         if effect['type'] == "physical_shield":
             damage = break_shield(unit, damage, target, i)
             if damage == 0:
-                return
+                return False
+        #Проверка невидимости
+        if effect['type'] == "shadow_mantle":
+            target['effects'].pop(i)
+            print(f"{YELLOW}Невидимость {target['name']} пропадает!")
+    #Нанесение урона
     target['hp'] -= damage
     print(f"{GREEN}{unit['name']}{RESET} наносит {RED}{damage}{RESET} урона!")
     died = target['hp'] <= 0
@@ -53,7 +65,7 @@ def break_shield(unit, damage, target, effect_index):
     if shield > damage:
         effect['value'] -= damage
         print(f"{YELLOW}Урон заблокирован!{RESET}")
-        return False
+        return 0
     else:
         excess_damage = damage - shield
         print(f"{YELLOW}Щит разрушен!{RESET}")
@@ -72,17 +84,23 @@ def process_hero_attack(hero, enemy_team):
     if target is None:
         return False
     print(f"{GREEN}{hero['name']}{RESET} атакует {YELLOW}{target['name']}{RESET}:")
+    #Проверка шанса попасть по цели
     hit_chance = int(hero['accuracy'])
     if random.randint(1, 100) > hit_chance:
         print(f"{YELLOW}Промах!{RESET}")
         print()
         return False
+    #Настройка разброса урона
     damage_variance = random.uniform(-0.1, 0.1)
     damage = round(hero['damage'] * (1 + damage_variance))
     damage = max(1, int(damage))
+    #Проверка критического удара
     if random.randint(1, 100) <= hero['crit_chance']:
         print(f"{YELLOW}Крит! {RESET}", end=' ')
         damage = int( damage * 1.5)
+        if hero['crit_chance'] != hero['basic_crit_chance']:
+            hero['crit_chance'] = hero['basic_crit_chance']
+    #Нанесение урона
     deal_damage(hero, target, damage)
     if hero['mp'] < hero['max_mp']:
         hero['mp'] = min(hero['mp'] + 15, hero['max_mp'])

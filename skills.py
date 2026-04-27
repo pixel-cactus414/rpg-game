@@ -238,7 +238,7 @@ def skill_triple_strike (hero, enemy_team, skill):
         if target['hp'] > 0:
             deal_damage(hero, target, skill['value'])
             hero['mp'] -= int(skill['mana_cost'] / 3)
-#
+#Сталкер
 def skill_shadow_ambush(hero, skill):
     """
     Навык Засада: даёт невидимость герою, который использует навык, а аткже повышает шанс критического удара
@@ -260,6 +260,8 @@ def skill_shadow_ambush(hero, skill):
     hero['crit_chance'] = min(hero['crit_chance'] + skill['value'], 100)
     print(f"{GREEN}{hero['name']} {BLUE}становится невидимым{RESET}")
     hero['mp'] -= skill['mana_cost']
+def critical_shot():
+    pass
 #
 def asd():
     pass

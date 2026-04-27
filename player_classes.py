@@ -158,7 +158,7 @@ werewolf = {
             "damage_mod": 2.5,
             "threat_mod": 1.2,
             "accuracy_mod": 1.0,
-            "crit_chance_mod": 0.3,
+            "crit_chance_mod": 0.2,
             "icon": "🐺",
             "skills": [
                 {

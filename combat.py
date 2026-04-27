@@ -102,6 +102,7 @@ def process_hero_attack(hero, enemy_team):
             hero['crit_chance'] = hero['basic_crit_chance']
     #Нанесение урона
     deal_damage(hero, target, damage)
+    removing_invisibility(hero)
     if hero['mp'] < hero['max_mp']:
         hero['mp'] = min(hero['mp'] + 15, hero['max_mp'])
     if not get_alive_units(enemy_team):

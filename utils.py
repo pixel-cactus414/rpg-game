@@ -251,11 +251,13 @@ def decrease_effects(team):
                     time.sleep(0.3)
         for i in reversed(expired_effects):
             unit['effects'].pop(i)
+        #Обратная трансформация оборотня
         if unit.get("transform_timer", 0) > 0:
-            unit['transform_timer'] -= 1
-            if unit['transform_timer'] == 0:
-                print(f"{YELLOW}Трансформация {GREEN}{unit['name']}{YELLOW} закончиоась!{RESET}")
-                revert_transform(unit)
+            if unit['hp'] > 0:
+                unit['transform_timer'] -= 1
+                if unit['transform_timer'] == 0:
+                    print(f"{YELLOW}Трансформация {GREEN}{unit['name']}{YELLOW} закончиоась!{RESET}")
+                    revert_transform(unit)
 def is_stunned(unit):
     """
     Проверяет оглушён ли юнит.
@@ -299,3 +301,10 @@ def get_target(team):
     else:
         choice = get_number(f"{BLUE}Выберите цель: {RESET}", 1, len(alive_enemies))
         return alive_enemies[choice - 1]
+def removing_invisibility(unit):
+    # Проверка невидимости
+    for i, effect in enumerate(unit['effects']):
+        if effect['type'] == "shadow_mantle":
+            unit['effects'].pop(i)
+            print(f"{YELLOW}Невидимость {unit['name']} пропадает!")
+            break

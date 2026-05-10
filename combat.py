@@ -17,9 +17,9 @@ def deal_damage(unit, target, damage):
     :return: (bool) True если цель умерла после атаки
                     False если цуль осталась жива
     """
-    #Проверка эффекта "Увеличение урона" у атакующего
     expired = []
     for i, effect in enumerate(unit['effects']):
+        #Проверка эффекта "Увеличение урона" у атакующего
         if effect['type'] == "damage_boost":
             damage *= effect['value']
             damage = int(damage)
@@ -27,6 +27,10 @@ def deal_damage(unit, target, damage):
             #Удаление эффекта, если заряжы закончились
             if effect['charges'] == 0:
                 expired.append(i)
+        #Проверка невидимости у атакующего
+        if effect['type'] == "shadow_mantle":
+            expired.append(i)
+            print(f"{YELLOW}Невидимость {unit['name']} пропадает!")
     for i in reversed(expired):
         unit['effects'].pop(i)
     #Проверка эффектов у цели атаки
@@ -97,7 +101,7 @@ def process_hero_attack(hero, enemy_team):
     #Проверка критического удара
     if random.randint(1, 100) <= hero['crit_chance']:
         print(f"{YELLOW}Крит! {RESET}", end=' ')
-        damage = int( damage * 1.5)
+        damage = int(damage * 1.5)
         if hero['crit_chance'] != hero['basic_crit_chance']:
             hero['crit_chance'] = hero['basic_crit_chance']
     #Нанесение урона

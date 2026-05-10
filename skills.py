@@ -260,11 +260,32 @@ def skill_shadow_ambush(hero, skill):
     hero['crit_chance'] = min(hero['crit_chance'] + skill['value'], 100)
     print(f"{GREEN}{hero['name']} {BLUE}становится невидимым{RESET}")
     hero['mp'] -= skill['mana_cost']
-def critical_shot():
+def skill_critical_shot(hero, skill, enemy_team):
+    """
+    Навык Разящий выстрел: герой атакует врага, урон равен сумме половины Шанса Крита и базовому урону навка
+    :param hero: (dict) Словарь героя использующего навык
+    :param skill: dict) Словарь навыка
+    :return: None
+    """
+    target = get_target(enemy_team)
+    if not target:
+        return
+    base_damage = skill['value']
+    bonus = hero['crit_chance'] // 2
+    damage = base_damage + bonus
+    if random.randint(1, 100) <= hero['crit_chance']:
+        print(f"{YELLOW}Крит! {RESET}", end=' ')
+        damage = int(damage * 1.5)
+        if hero['crit_chance'] != hero['basic_crit_chance']:
+            hero['crit_chance'] = hero['basic_crit_chance']
+    deal_damage(hero, target, damage)
+    hero['mp'] -= skill['mana_cost']
+#
+def aaa():
+    pass
+def aa():
     pass
 #
-def asd():
-    pass
 def activate_skill(hero, hero_team, enemy_team, skill_index):
     """
     Активирует выбранный навык героя в зависимости от его типа.
@@ -302,3 +323,5 @@ def activate_skill(hero, hero_team, enemy_team, skill_index):
         skill_triple_strike(hero, enemy_team, skill)
     elif skill['type'] == "shadow_ambush":
         skill_shadow_ambush(hero, skill)
+    elif skill['type'] == "critical_shot":
+        skill_critical_shot(hero, skill, enemy_team)

@@ -269,7 +269,7 @@ stalker = {
     "max_hp": 60,
     "hp": 60,
     "max_mp": 100,
-    "mp": 30,
+    "mp": 300,
     "damage": 15,
     "threat": 0.8,
     "accuracy": 100,
@@ -285,14 +285,14 @@ stalker = {
             "value": 30,
             "duration": 2
         },
-        # {
-        #     "name": "Разящий выстрел",
-        #     "description": "Герой совершает мощный выстрел, урон которого увеличивается от шанса критического удара.",
-        #     "type": "critical_shot",
-        #     "mana_cost": 50,
-        #     "value": 30,
-        #     "duration": None
-        # }
+        {
+            "name": "Разящий выстрел",
+            "description": "Герой совершает мощный выстрел, урон которого увеличивается от шанса критического удара.",
+            "type": "critical_shot",
+            "mana_cost": 50,
+            "value": 10,
+            "duration": None
+        }
     ]
 }
 archer = {

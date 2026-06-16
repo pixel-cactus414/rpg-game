@@ -14,6 +14,16 @@ medic_dog = {
     "hp": 60,
     "max_mp": 100,
     "mp": 30,
+    "attack": [
+        {
+            "damage": 10,
+            "damage_type": "physical",
+            "accuracy": 85,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "effects": []
+    }
+    ],
     "damage": 10,
     "threat": 0.8,
     "accuracy": 85,
@@ -46,6 +56,16 @@ tank_human = {
     "hp": 150,
     "max_mp": 100,
     "mp": 30,
+    "attack": [
+        {
+            "damage": 15,
+            "damage_type": "physical",
+            "accuracy": 85,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "effects": []
+        }
+    ],
     "damage": 15,
     "threat": 1.0,
     "accuracy": 85,
@@ -79,6 +99,16 @@ warrior = {
     "hp": 80,
     "max_mp": 100,
     "mp": 30,
+    "attack": [
+        {
+            "damage": 20,
+            "damage_type": "physical",
+            "accuracy": 85,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "effects": []
+        }
+    ],
     "damage": 20,
     "threat": 0.9,
     "accuracy": 85,
@@ -237,11 +267,17 @@ placeholder = {
     "hp": 0,
     "max_mp": 0,
     "mp": 0,
-    "damage": 0,
+    "attack": [
+        {
+            "damage": 0,
+            "damage_type": "physical",
+            "accuracy": 85,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "effects": []
+        }
+    ],
     "threat": 1,
-    "accuracy": 85,
-    "crit_chance": 20,
-    "basic_crit_chance": 20,
     "effects": [],
     "skills": [
         {
@@ -270,6 +306,16 @@ stalker = {
     "hp": 60,
     "max_mp": 100,
     "mp": 300,
+    "attack": [
+        {
+            "damage": 15,
+            "damage_type": "physical",
+            "accuracy": 100,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "skills": []
+        }
+    ],
     "damage": 15,
     "threat": 0.8,
     "accuracy": 100,
@@ -303,6 +349,16 @@ archer = {
     "hp": 80,
     "max_mp": 100,
     "mp": 30,
+    "attack": [
+        {
+            "damage": 20,
+            "damage_type": "physical",
+            "accuracy": 100,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "skills": []
+        }
+    ],
     "damage": 20,
     "threat": 0.9,
     "accuracy": 100,
@@ -336,4 +392,4 @@ all_enemies = [goblin, orc, wolf, fox]
 secret_heroes = [archer, stalker]
 #Размеры команд
 hero_team_size = 3
-enemy_team_size = 3
+enemy_team_size = 2

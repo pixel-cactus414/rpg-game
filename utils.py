@@ -3,6 +3,10 @@ import random
 import copy
 import time
 
+import player_classes
+from player_classes import all_hero
+
+
 def get_number(prompt, min_val, max_val):
     """
     Запрашивает у пользователя число в заданном диапозоне.
@@ -77,16 +81,16 @@ def setup_hero_team(all_hero, team_size):
     :param team_size: (int) Количество возможных героев в команде
     :return: (list) Список выбранных словарей героев (без повторений)
     """
-    team = []
     available_heroes = all_hero.copy()
+    team = []
+    team.append(available_heroes.pop(0))
+    team_size -= 1
     for j in range(team_size):
         print(f"{YELLOW}Выберите {j+1}/{team_size} героя {RESET}")
         for i in range(len(available_heroes)):
             hero = available_heroes[i]
-            print(f"{YELLOW}{i+1}){RESET} {hero['icon']}  {GREEN}{hero['name']}{RESET}: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}")
-            skills = get_current_skills(hero)
-            for skill in skills:
-                print(f"{BLUE}{t_left}{line_h} {RED}{skill['name']}{RESET} = {skill['description']}")
+            print(f"{YELLOW}{i+1}){RESET} {hero['icon']}  {GREEN}{hero['name']}{RESET}")
+            #: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}
         choice = get_number(f"{BLUE}Введите номер героя: {RESET}", 1, len(available_heroes))
         team.append(available_heroes.pop(choice - 1))
         print()
@@ -118,6 +122,7 @@ def show_stats(hero_team, enemy_team):
     print(f"{BLUE}{corner_tld}{line_hd * 38}{corner_trd}")
     print(f"{line_vd}{f'ТЕКУЩЕЕ СОСТОЯНИЕ:':^38}{line_vd}")
     print(f"{BLUE}{t_left}{line_hd * 38}{t_right}")
+    print(f"{line_vd}{f'ГЕРОИ':^38}{line_vd}")
     for hero in hero_team:
         name_line = f"{hero['icon']}  {hero['name']} ({hero['crit_chance']}% crit):"
         print(f"{BLUE}{line_vd}{GREEN}{name_line:^20}{RESET}", end='')
@@ -132,7 +137,9 @@ def show_stats(hero_team, enemy_team):
                 shows_sh_bar(hero, effect)
         print(f"{BLUE}{line_vd}{RESET}", end=" ")
         shows_mp_bar(hero)
-    print(f"{BLUE}{line_vd}{RESET}")
+
+    print(f"{BLUE}{t_left}{line_hd * 38}{t_right}")
+    print(f"{line_vd}{f'ВРАГИ':^38}{line_vd}")
     for enemy in enemy_team:
         print(f"{BLUE}{line_vd}{RESET}", end=" ")
         print(f"{f'{YELLOW}{enemy['name']}{RESET}:':^30}", end=' ')
@@ -142,6 +149,12 @@ def show_stats(hero_team, enemy_team):
         print(f"{BLUE}{line_vd}{RESET}", end=" ")
         shows_hp_bar(enemy)
     print(f"{BLUE}{corner_dld}" + f"{line_hd}" * 38 + f"{corner_drd}{RESET}")
+def shows_ending_stats(hero_team, enemy_team, round_num):
+    print(f"{YELLOW}{corner_tld}" + f"{line_hd}" * 38 + f"{corner_trd}")
+    print(f"{line_vd}{'ИГРА ОКОНЧЕНА':^38}{line_vd}")
+    print(f"{line_vd}{f'ВСЕГО РАУНДОВ: {round_num}':^38}{line_vd}")
+    print(f"{corner_dld}" + f"{line_hd}" * 38 + f"{corner_drd}{RESET}")
+    show_stats(hero_team, enemy_team)
 def shows_hp_bar(unit):
     """
     Выводит цветную полоску hp юнита в консоль
@@ -308,3 +321,25 @@ def removing_invisibility(unit):
             unit['effects'].pop(i)
             print(f"{YELLOW}Невидимость {unit['name']} пропадает!")
             break
+def requires_code(all_hero, secret_heroes):
+    code = input("Введите код: ")
+    if code == "+":
+        all_hero.extend(secret_heroes)
+        return all_hero
+def typewriter(text, color, delay=0.1):
+    for char in text:
+        print(f"{color}{char}", end='')
+        time.sleep(delay)
+    time.sleep(0.1)
+    print()
+
+def shows_all_heroes():
+    available_heroes = all_hero.copy()
+    for i in range(len(available_heroes)):
+        hero = available_heroes[i]
+        print(f"{BLUE}{line_v}{RESET} {hero['icon']}  {GREEN}{hero['name']}{RESET}: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}")
+        skills = get_current_skills(hero)
+        for skill in skills:
+            print(f"{BLUE}{t_left}{line_h} {RED}{skill['name']}{RESET} = {skill['description']}")
+def shows_intro():
+    pass

@@ -41,7 +41,7 @@ medic_dog = {
         },
         {
             "name": "Оглушающий лай",
-            "description": "Громкий лай оглушает выбранного противника на 1 ход",
+            "description": "Громкий лай оглушает выбранного противника на 1 раунд",
             "type": "stun",
             "mana_cost": 30,
             "duration": None
@@ -75,7 +75,7 @@ tank_human = {
     "skills": [
         {
             "name": "Провокация",
-            "description": "Заставляет всех врагов атаковать себя на 1 ход",
+            "description": "Заставляет всех врагов атаковать себя на 1 раунд",
             "type": "taunt",
             "mana_cost": 50,
             "value": None,
@@ -92,7 +92,7 @@ tank_human = {
     ]
 }
 warrior = {
-    "name": "Рыцарь",
+    "name": "Воин",
     "class": "damage",
     "icon": damage_icon,
     "max_hp": 80,
@@ -101,6 +101,7 @@ warrior = {
     "mp": 30,
     "attack": [
         {
+            "name": "Укол",
             "damage": 20,
             "damage_type": "physical",
             "accuracy": 85,
@@ -125,8 +126,8 @@ warrior = {
             "charges": 2
     },
         {
-            "name": "Яростный взмах",
-            "description": "Наносит 60 урона выбранному врагу. При убийстве врага мана не расходуется",
+            "name": "Выпад",
+            "description": "Мощный колющий удар рапирой, наносящий 60 урона. При убийстве мана не расходуется",
             "type": "execution",
             "mana_cost": 60,
             "value": 60,
@@ -174,8 +175,8 @@ werewolf = {
                     "duration": 0
                 },
                 {
-                    "name": "Подавленная ярость",
-                    "description": "Перевоплощение в зверя",
+                    "name": "Высвобождение ярости",
+                    "description": "Превращается в зверя",
                     "type": "transform",
                     "mana_cost": 60,
                     "duration": 5,
@@ -200,7 +201,7 @@ werewolf = {
                     "duration": None
                 },
                 {
-                    "name": "Подавленная ярость",
+                    "name": "Высвобождение ярости",
                     "description": "Наносит 3 удара (по 20 урона) выбранному врагу.",
                     "type": "multiple_damage",
                     "mana_cost": 60,
@@ -305,7 +306,7 @@ stalker = {
     "max_hp": 60,
     "hp": 60,
     "max_mp": 100,
-    "mp": 300,
+    "mp": 30,
     "attack": [
         {
             "damage": 15,
@@ -325,7 +326,7 @@ stalker = {
     "skills": [
         {
             "name": "Засада",
-            "description": "Герой становится невидимым на 2 хода и повышает шанс критического удара на 30%.",
+            "description": "Герой становится невидимым на 2 раунда и повышает шанс критического удара на 30%.",
             "type": "shadow_ambush",
             "mana_cost": 30,
             "value": 30,
@@ -391,5 +392,5 @@ all_hero = [warrior, medic_dog, tank_human, werewolf]
 all_enemies = [goblin, orc, wolf, fox]
 secret_heroes = [archer, stalker]
 #Размеры команд
-hero_team_size = 3
-enemy_team_size = 2
+hero_team_size = 4
+enemy_team_size = 1

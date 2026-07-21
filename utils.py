@@ -120,7 +120,7 @@ def show_stats(hero_team, enemy_team):
     :return: None
     """
     print(f"{BLUE}{corner_tld}{line_hd * 38}{corner_trd}")
-    print(f"{line_vd}{f'ТЕКУЩЕЕ СОСТОЯНИЕ:':^38}{line_vd}")
+    print(f"{line_vd}{f'ТЕКУЩЕЕ СОСТОЯНИЕ':^38}{line_vd}")
     print(f"{BLUE}{t_left}{line_hd * 38}{t_right}")
     print(f"{line_vd}{f'ГЕРОИ':^38}{line_vd}")
     for hero in hero_team:

@@ -216,8 +216,8 @@ werewolf = {
 #Все враги
 orc = {
     "name": "Орк",
-    "max_hp": 180,
-    "hp": 180,
+    "max_hp": 150,
+    "hp": 150,
     "mp": 0,
     "max_mp": 0,
     "damage": 12,
@@ -227,8 +227,8 @@ orc = {
 }
 goblin = {
     "name": "Гоблин",
-    "max_hp": 130,
-    "hp": 130,
+    "max_hp": 120,
+    "hp": 120,
     "mp": 0,
     "max_mp": 0,
     "damage": 16,
@@ -393,4 +393,4 @@ all_enemies = [goblin, orc, wolf, fox]
 secret_heroes = [archer, stalker]
 #Размеры команд
 hero_team_size = 4
-enemy_team_size = 1
+enemy_team_size = 3

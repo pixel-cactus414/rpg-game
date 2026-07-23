@@ -103,7 +103,7 @@ def process_enemies_turn(enemy_team, hero_team):
     """
     for enemy in get_alive_units(enemy_team):
         if enemy['hp'] > 0:
-            print(f"{BLUE}Ход противника {YELLOW}{enemy['name']}{BLUE}:{RESET}")
+            print(f"{BLUE}Ход врага {YELLOW}{enemy['name']}{BLUE}:{RESET}")
             if is_stunned(enemy):
                 continue
             if process_enemy_attack(enemy, hero_team):
@@ -151,10 +151,11 @@ def game_loop(hero_team, enemy_team):
             return True, round_num
         time.sleep(0.5)
         print(f"{BLUE}{f'РАУНД {round_num}!':^38}{RESET}")
+        print(f"{YELLOW}{f'ГЕРОИ АТАКУЮТ':^38}{RESET}")
         if process_heroes_turn(hero_team, enemy_team):
             return True, round_num
         time.sleep(0.3)
-        print(f"{YELLOW}{f'ХОД ВРАГОВ':^38}{RESET}")
+        print(f"{YELLOW}{f'ВРАГИ АТАКУЮТ':^38}{RESET}")
         time.sleep(0.7)
         if process_enemies_turn(enemy_team, hero_team):
             return True, round_num

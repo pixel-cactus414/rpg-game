@@ -1,11 +1,6 @@
 from config import *
 
-#Классы
-    #damage
-    #support
-    #tank
-
-#Все герои
+#Все готовые герои
 warrior = {
     "name": "Воин",
     "description": "Воин - опытный воин и вдохновляющий лидер команды, мастерски владеющий рапирой. Он не только наносит уверенные удары, но и служит сердцем команды и опорой для союзников, усиливая их в атаке. Его присутствие на поле боя вселяет уверенность и помогает команде выдержать самые сложные испытания.",
@@ -148,7 +143,7 @@ werewolf = {
     "name": "Оборотень",
     "description": "Две личности борются за контроль над телом: холодный разум человека и неистовая ярость зверя. Когда луна восходит, его когти рвут плоть, а когда заходит - остаются лишь кровавые следы и тихий стон, застрывший между человеческим <почему?> и звериным <ещё>...",
     "class": "damage",
-    "icon": "🧔",
+    "icon": "⚔️🧔",
     "base_max_hp": 100,
     "base_hp": 100,
     "base_damage": 10,
@@ -174,7 +169,7 @@ werewolf = {
             "threat_mod": 0.8,
             "accuracy_mod": 0.85,
             "crit_chance_mod": 0.2,
-            "icon": "🧔",
+            "icon": "⚔️🧔",
             "skills": [
                 {
                     "name": "Жажда крови",
@@ -200,7 +195,7 @@ werewolf = {
             "threat_mod": 1.2,
             "accuracy_mod": 1.0,
             "crit_chance_mod": 0.2,
-            "icon": "🐺",
+            "icon": "⚔️🐺",
             "skills": [
                 {
                     "name": "Жажда крови",
@@ -337,6 +332,10 @@ placeholder = {
             "effects": []
         }
     ],
+    "damage": 0,
+    "accuracy": 100,
+    "crit_chance": 20,
+    "basic_crit_chance": 20,
     "threat": 1,
     "effects": [],
     "skills": [
@@ -423,6 +422,10 @@ bard_human = {
             "effects": []
         }
     ],
+    "damage": 0,
+    "accuracy": 100,
+    "crit_chance": 20,
+    "basic_crit_chance": 20,
     "threat": 1,
     "effects": [],
     "skills": [
@@ -452,9 +455,6 @@ tank_bear = {
     "hp": 200,
     "max_mp": 100,
     "mp": 30,
-
-    "damage": "20",
-
     "attack": [
         {
             "name": "Массивные когти",
@@ -467,6 +467,10 @@ tank_bear = {
             "effects": []
         }
     ],
+    "damage": 0,
+    "accuracy": 100,
+    "crit_chance": 20,
+    "basic_crit_chance": 20,
     "threat": 1,
     "effects": [],
     "skills": [
@@ -501,7 +505,52 @@ witch_doctor = {}
 gardener = {}
 mushroom = {}
 engineer = {}
-tank_bot = {}
+tank_bot = {
+    "name": "Прототип",
+    "description": "Прототип - экспериментальный боевой робот, созданный Инженером для защиты от магических угроз. Лишённый способности использовать ману, он преобразует её в Энергию. В его арсенале - защитные дроны, поглощающие магические атаки, и электросеть, усиливающая его защитные и юоевые системы.",
+    "class": "tank",
+    "icon": tank_icon,
+    "max_hp": 140,
+    "hp": 140,
+    "max_mp": 100,
+    "mp": 30,
+    "attack": [
+        {
+            "name": "Электроразряд",
+            "description": "Выпускает электрический разряд, нанося ?? урона врагу.",
+            "damage": 0,
+            "damage_type": "magical",
+            "accuracy": 85,
+            "basic_crit_chance": 20,
+            "crit_chance": 20,
+            "effects": []
+        }
+    ],
+    "damage": 0,
+    "accuracy": 100,
+    "crit_chance": 20,
+    "basic_crit_chance": 20,
+    "threat": 1,
+    "effects": [],
+    "skills": [
+        {
+            "name": "Дрон-защитник",
+            "description": "Устанавливает дрон на союзника. Дрон поглощает магический урон, пока не буден уничтожен. При уничтожении дрон взрывается, поджигая врага который его уничтожил. ",
+            "type": "",
+            "mana_cost": 20,
+            "value": 0,
+            "duration": 0
+        },
+        {
+            "name": "Электросеть",
+            "description": "Активирует электросеть на 3 рвунда, которая связывает всех союзников. Пока сеть активна, урон, который получает союзник, делится: 80% остаётся союзнику, 20% перенаправляется Прототипу.",
+            "type": "",
+            "mana_cost": 40,
+            "value": 0,
+            "duration": 3
+        }
+    ]
+}
 priestess = {}
 mage = {}
 shadow = {}
@@ -509,7 +558,8 @@ shadow = {}
 #Списки всех существ
 all_hero = [warrior, medic_dog, tank_human, werewolf, stalker]
 all_enemies = [goblin, orc, wolf, fox]
-secret_heroes = [archer, bard_human, tank_bear, witch_doctor, gardener, mushroom, engineer, tank_bot, priestess, mage, shadow]
+secret_heroes = [archer, tank_bear, tank_bot]
+unfinished_heroes = [bard_human, witch_doctor, gardener, mushroom, engineer, priestess, mage, shadow]
 
 #Размеры команд
 hero_team_size = 4

@@ -340,6 +340,6 @@ def shows_all_heroes():
         print(f"{BLUE}{line_v}{RESET} {hero['icon']}  {GREEN}{hero['name']}{RESET}: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}")
         skills = get_current_skills(hero)
         for skill in skills:
-            print(f"{BLUE}{t_left}{line_h} {RED}{skill['name']}{RESET} = {skill['description']}")
+            print(f"{BLUE}{t_left}{line_h} {YELLOW}{skill['name']}{RESET} = {skill['description']}")
 def shows_intro():
     pass

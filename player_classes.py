@@ -10,8 +10,7 @@ warrior = {
     "hp": 80,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Укол",
             "description": "Совершает быстрый укол рапирой, нанося 20 урона",
             "damage": 20,
@@ -20,8 +19,7 @@ warrior = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+    },
     "damage": 20,
     "threat": 0.9,
     "accuracy": 85,
@@ -56,8 +54,7 @@ medic_dog = {
     "hp": 60,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Крепкая хватка",
             "description": "Берри кусает врага, нанося 10 урона.",
             "damage": 10,
@@ -66,8 +63,7 @@ medic_dog = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-    }
-    ],
+    },
     "damage": 10,
     "threat": 0.8,
     "accuracy": 85,
@@ -101,8 +97,7 @@ tank_human = {
     "hp": 150,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Священный молот",
             "description": "Паладин совершает мощный удар молотом, нанося 15 урона врагу.",
             "damage": 15,
@@ -111,8 +106,7 @@ tank_human = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+        },
     "damage": 15,
     "threat": 1.0,
     "accuracy": 85,
@@ -226,8 +220,7 @@ stalker = {
     "hp": 60,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Жнец душ",
             "description": "Сталкер совершает выстрел по врагу из своего арбалета, нанося 15 урона.",
             "damage": 15,
@@ -236,8 +229,7 @@ stalker = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "skills": []
-        }
-    ],
+        },
     "damage": 15,
     "threat": 0.8,
     "accuracy": 100,
@@ -320,8 +312,7 @@ placeholder = {
     "hp": 0,
     "max_mp": 0,
     "mp": 0,
-    "attack": [
-        {
+    "attack": {
             "name": "",
             "description": "",
             "damage": 0,
@@ -330,8 +321,7 @@ placeholder = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+        },
     "damage": 0,
     "accuracy": 100,
     "crit_chance": 20,
@@ -365,16 +355,14 @@ archer = {
     "hp": 80,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "damage": 20,
             "damage_type": "physical",
             "accuracy": 100,
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "skills": []
-        }
-    ],
+        },
     "damage": 20,
     "threat": 0.9,
     "accuracy": 100,
@@ -410,8 +398,7 @@ bard_human = {
     "hp": 60,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "",
             "description": "",
             "damage": 0,
@@ -420,8 +407,7 @@ bard_human = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+        },
     "damage": 0,
     "accuracy": 100,
     "crit_chance": 20,
@@ -455,8 +441,7 @@ tank_bear = {
     "hp": 200,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Массивные когти",
             "description": "Совершает удар когтистой лапой, нанося ?? урона врагу.",
             "damage": 0,
@@ -465,8 +450,7 @@ tank_bear = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+        },
     "damage": 0,
     "accuracy": 100,
     "crit_chance": 20,
@@ -514,8 +498,7 @@ tank_bot = {
     "hp": 140,
     "max_mp": 100,
     "mp": 30,
-    "attack": [
-        {
+    "attack": {
             "name": "Электроразряд",
             "description": "Выпускает электрический разряд, нанося ?? урона врагу.",
             "damage": 0,
@@ -524,8 +507,7 @@ tank_bot = {
             "basic_crit_chance": 20,
             "crit_chance": 20,
             "effects": []
-        }
-    ],
+        },
     "damage": 0,
     "accuracy": 100,
     "crit_chance": 20,
@@ -556,9 +538,9 @@ mage = {}
 shadow = {}
 
 #Списки всех существ
-all_hero = [warrior, medic_dog, tank_human, werewolf, stalker]
+all_hero = [warrior, medic_dog, tank_human, stalker]
 all_enemies = [goblin, orc, wolf, fox]
-secret_heroes = [archer, tank_bear, tank_bot]
+secret_heroes = [werewolf, archer, tank_bear, tank_bot]
 unfinished_heroes = [bard_human, witch_doctor, gardener, mushroom, engineer, priestess, mage, shadow]
 
 #Размеры команд

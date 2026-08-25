@@ -6,11 +6,7 @@ from turn_logic import *
 def main():
     print(f"{BLUE}Зачарованный {GREEN}Лес{RESET}")
     print()
-    requires_code(all_hero, secret_heroes)
     writes_the_introduction()
-    # typewriter(text_line_1, BLUE, 0)
-    # typewriter(text_line_2, BLUE, 0)
-    # typewriter(text_line_3, YELLOW, 0)
     print()
     time.sleep(0.8)
     shows_all_heroes()

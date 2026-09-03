@@ -4,7 +4,7 @@ import copy
 import time
 
 import player_classes
-from player_classes import all_hero
+from player_classes import all_hero, secret_heroes
 
 
 def get_number(prompt, min_val, max_val):
@@ -337,9 +337,55 @@ def shows_all_heroes():
     available_heroes = all_hero.copy()
     for i in range(len(available_heroes)):
         hero = available_heroes[i]
-        print(f"{BLUE}{line_v}{RESET} {hero['icon']}  {GREEN}{hero['name']}{RESET}: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}")
+        #{BLUE}{line_v}{RESET}
+        print(f"{hero['icon']} {GREEN}{hero['name']}{RESET}: {RED}{hero['max_hp']} HP{RESET}, {BLUE}{hero['damage']} DAMAGE{RESET}")
+        print(f"    {BLUE}{t_left}{line_h} {YELLOW}Атака{RESET} = {hero.get('attack', {}).get('name', 'удар')}{RESET} = {hero.get('attack', {}).get('description', 'мощный удар')}{RESET}")
         skills = get_current_skills(hero)
+
+        num_of_skills = 0
+        for _ in skills:
+            num_of_skills += 1
         for skill in skills:
-            print(f"{BLUE}{t_left}{line_h} {RED}{skill['name']}{RESET} = {skill['description']}")
+            if num_of_skills == 1:
+                line_or_corner = corner_dl
+            else:
+                line_or_corner = t_left
+
+            print(f"    {BLUE}{line_or_corner}{line_h} {YELLOW}{skill['name']}{RESET} = {skill['description']}")
+            num_of_skills -= 1
+        time.sleep(0.3)
 def shows_intro():
     pass
+def writes_the_introduction():
+    print(f"{BLUE}{corner_tld}{line_hd*80}{corner_trd}{RESET}")
+    print(f"{BLUE}{line_vd}{RESET} {text_line_1}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_2}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_3}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_4}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_5}")
+    print(f"{BLUE}{line_vd}{RESET}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_6}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_7}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_8}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_9}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_10}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_11}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{line_vd}{RESET} {text_line_12}")
+    #time.sleep(0.2)
+    print(f"{BLUE}{corner_dld}{line_hd*80}{corner_drd}{RESET}")
+    print()
+    requires_code(all_hero, secret_heroes)
+    print()
+    time.sleep(0.2)
+    print(text_line_13)

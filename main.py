@@ -8,7 +8,7 @@ def main():
     print()
     writes_the_introduction()
     print()
-    time.sleep(0.8)
+    time.sleep(0.5)
     shows_all_heroes()
     print()
     hero_team = setup_hero_team(all_hero, hero_team_size)

@@ -353,6 +353,7 @@ def shows_all_heroes():
 
             print(f"    {BLUE}{line_or_corner}{line_h} {YELLOW}{skill['name']}{RESET} = {skill['description']}")
             num_of_skills -= 1
+        time.sleep(0.4)
 def shows_intro():
     pass
 def writes_the_introduction():

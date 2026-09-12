@@ -354,8 +354,6 @@ def shows_all_heroes():
             print(f"    {BLUE}{line_or_corner}{line_h} {YELLOW}{skill['name']}{RESET} = {skill['description']}")
             num_of_skills -= 1
         time.sleep(0.4)
-def shows_intro():
-    pass
 def writes_the_introduction():
     print(f"{BLUE}{corner_tld}{line_hd*80}{corner_trd}{RESET}")
     print(f"{BLUE}{line_vd}{RESET} {text_line_1}")
@@ -385,7 +383,7 @@ def writes_the_introduction():
     #time.sleep(0.2)
     print(f"{BLUE}{corner_dld}{line_hd*80}{corner_drd}{RESET}")
     print()
-    requires_code(all_hero, secret_heroes)
+    #requires_code(all_hero, secret_heroes)
     print()
     time.sleep(0.2)
     print(text_line_13)
